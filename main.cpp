@@ -12,7 +12,7 @@ int counterNum = 1;
 long long int res;
 
 // Funções
-long long int calculator (int a, int b, char operation) {
+long long int calculator (long long int a, long long int b, char operation) {
     long long int resul;
     long long int pot;
 
