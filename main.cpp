@@ -1,22 +1,39 @@
+/*  
+O programa em questão é um simples "calculadora" que permite o usuário realizar operações matemáticas básicas como adição, subtração, multiplicação, divisão, 
+potenciação, modulo, entre outras.
+
+A lógica do programa é a seguinte:
+
+    1. Alocação de memória: São definidas duas variáveis constantes, uma para armazenar a quantidade de memória disponível para o software (memorySpace) e outra 
+    para armazenar o valor de Pi com uma precisão de duas casas decimais (PiPrecision). Além disso, são criados dois vetores, um para armazenar os números (num) 
+    e outro para armazenar os operadores (ope).
+    2. Loop principal: É criado um loop principal para a reinicialização do software (rep).
+    3. Interação com o usuário: O usuário é solicitado a inserir dois números e uma operação. A operação é armazenada no vetor "ope" e os números são armazenados
+    no vetor "num". Em seguida, a função "calculator" é chamada para realizar a operação desejada com os números inseridos e o operador escolhido.
+    4. Loop secundário: É criado um loop secundário para verificar se o usuário deseja realizar mais operações (rep2). Caso deseje, o processo de interação com o
+    usuário é repetido (passos 3.1 a 3.3).
+    5. Apresentação dos resultados: Após o usuário decidir não realizar mais operações, as operações realizadas são apresentadas na tela, juntamente com seus 
+    resultados.
+    6. Fim do programa: O programa é encerrado.
+ */
+
 #include <iostream>
 
 using namespace std;
 
-// Definições
-#defin memorySpace 128
-
 // Variáveis
+const uint8_t memorySpace = 128; // Memória alocada para o software
 double num[memorySpace];         // Vetor de números
 char ope[memorySpace];           // Vetor de operadores
-bool rep = true;        // Repetição primária
-bool rep2 = false;      // Repetição secundária
-int counterOpe = 0;     // Contador de operadores
-int counterNum = 1;     // Contador de números
-double res;             // Resultado final
+bool rep = true;                 // Repetição primária
+bool rep2 = false;               // Repetição secundária
+int counterOpe = 0;              // Contador de operadores
+int counterNum = 1;              // Contador de números
+double res;                      // Resultado final
 
 // Funções
 // Calculator: o input 'a' e 'b' são os números que serão calculados, o input 'c' é o operador que será usado para o cálculo (ex: '+', '-', '*', '/', '^', '[', ']', '|') e vai retornar o resultado do cálculo.
-double calculator (double a, double b, char operation);
+double calculator (double a, double b, char operation, float PiPrecision = 3.14);
 
 int main() {
     // Loop para reinicialização do software.
@@ -87,10 +104,9 @@ int main() {
     return 0;
 }
 
-double calculator (double a, double b, char operation) {
+double calculator (double a, double b, char operation, float PiPrecision) {
     double resul;
     double pot;
-    double pi = 3.14;
 
     switch (operation) {
         case '+':
@@ -145,7 +161,7 @@ double calculator (double a, double b, char operation) {
             resul = a * b;
 
         case 'c':
-            resul = pi * (a * b);
+            resul = PiPrecision * (a * b);
             break;
 
         default:
